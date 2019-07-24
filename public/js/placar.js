@@ -13,6 +13,14 @@ function inserePlacar() {
     scrollPlacar();
 }
 
+function scrollPlacar() {
+    var posicaoPlacar = $(".placar").offset().top;
+    $("body").animate(
+    {
+        scrollTop: posicaoPlacar + "px"
+    }, 1000);
+}
+
 function novaLinha(usuario, palavras) {
     var linha = $("<tr>");
     var colunaUsuario = $("<td>").text(usuario);
@@ -35,8 +43,6 @@ function novaLinha(usuario, palavras) {
 
 function removeLinha() {
     event.preventDefault();
-    $(this).parent().parent().remove();
-
     var linha = $(this).parent().parent();
 
     linha.fadeOut(1000);
@@ -47,13 +53,4 @@ function removeLinha() {
 
 function mostraPlacar() {
     $(".placar").stop().slideToggle(600);
-}
-
-function scrollPlacar() {
-    var posicaoPlacar = $(".placar").offset().top;
-
-    $("html, body").animate(
-    {
-        scrollTop: posicaoPlacar + "px"
-    }, 1000);
 }
